@@ -2,21 +2,21 @@ import java.util.*;
 
 class CoinChangeDP{
 	
-	 public static int[] dpMakeChange(List<Integer> coinValueList, int change, int[] minCoins) {
-        for (int cents = 0; cents <= change; cents++) {
-            int coinCount = cents;
-            for (Integer c : coinValueList) {
-                if (c > cents) {
-                    continue;
-                }
-                if (minCoins[cents - c] + 1 < coinCount) {
-                    coinCount = minCoins[cents - c] + 1;
-                }
-            }
-            minCoins[cents] = coinCount;
-        }
-        return minCoins;
-    }
+	public static int[] dpMakeChange(List<Integer> coinValueList, int change, int[] minCoins) {
+		for (int cents = 0; cents <= change; cents++) {
+			int coinCount = cents;
+			for (Integer c : coinValueList) {
+				if (c > cents) {
+					continue;
+				}
+				if (minCoins[cents - c] + 1 < coinCount) {
+					coinCount = minCoins[cents - c] + 1;
+				}
+			}
+			minCoins[cents] = coinCount;
+		}
+		return minCoins;
+	}
 
 
 	public static int[] changeCoinUsingDP(int change , int[] coinValues){
@@ -46,8 +46,6 @@ class CoinChangeDP{
 		return minCoins;
 	}
 
-
-
 	public static void main(String[] args) {
 		List<Integer> coinValueList = Arrays.asList(new Integer[]{1, 2, 3});
 		int[] coins = {1,2,3};
@@ -57,17 +55,17 @@ class CoinChangeDP{
 		int[] resultZ = changeCoinUsingDP(change , coins);
 
 		System.out.println("the min coin change is " + resultZ[resultZ.length-1]);
-        
 
-        // for (int i = 0; i < result.length; i++) {
-        	
-        // 	if(result[i] == resultZ[i]){
-        // 		System.out.println("OK");
-        // 	}else{
-        // 			System.out.println("Not OK");
-        // 			break;
-        // 	}
-           
-        // }
+
+		for (int i = 0; i < result.length; i++) {
+
+			if(result[i] == resultZ[i]){
+				System.out.println("OK");
+			}else{
+				System.out.println("Not OK");
+				break;
+			}
+
+		}
 	}
 }
